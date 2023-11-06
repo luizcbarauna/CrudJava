@@ -11,11 +11,11 @@ public class FuncionarioDAO {
     public FuncionarioDAO(){
         conectar=new Conectar();
     }
-    public String InsertFuncionario(String cpf,String  nome,String  rua,String  cargo,String  dt_admissao,Double  salarioBruto){
+    public String insertFuncionario(String cpf,String  nome,String  rua,String  cargo,String  dt_admissao,Double  salarioBruto){
         String respReg = null;
         try{
             Connection acessoDB= conectar.getConnection();
-        CallableStatement cs =acessoDB.prepareCall("{call sp_insertFuncionario(?,?,?,?,?,?)}");
+        CallableStatement cs =acessoDB.prepareCall("{call SP_InsertFuncionario(?,?,?,?,?,?)}");
         cs.setString(1,cpf);
         cs.setString(2, nome);
         cs.setString(3, rua);
@@ -39,7 +39,7 @@ public class FuncionarioDAO {
         Funcionario funcionario;
         try{
             Connection acessoDB = conectar.getConnection();
-            PreparedStatement ps = acessoDB.prepareStatement("select cpf, nome, rua, cargo, dt_admissao, salarioBruto from funcionario");
+            PreparedStatement ps = acessoDB.prepareStatement("select cpf, nome, rua, cargo, dt_admissao, salarioBruto from TB_funcionario");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 funcionario = new Funcionario();

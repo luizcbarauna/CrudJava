@@ -55,7 +55,7 @@ public void actionPerformed(ActionEvent e){
         String cargo = viewCRUD.txtCargo.getText();
         String dt_admissao = viewCRUD.txtdt_Admissao.getText();
         Double salarioBruto =Double.parseDouble(viewCRUD.txtSalarioBruto.getText());
-        String rptaRegistro = modelCRUD.InsertFuncionario(cpf, nome, rua, cargo, dt_admissao, salarioBruto);
+        String rptaRegistro = modelCRUD.insertFuncionario(cpf, nome, rua, cargo, dt_admissao, salarioBruto);
         if(rptaRegistro != null){
             JOptionPane.showMessageDialog(null, rptaRegistro);
         }else{

@@ -16,7 +16,7 @@ public Conectar(){
     
 }    
 public Connection getConnection(){
-    String url = "jdbc:sqlserver://localhost:1433; databaseName:BD_FOLHAPAGAMENTO;integratedSecurity=true;";
+    String url = "jdbc:sqlserver://localhost:1433;databaseName=BD_folhadepagamento;user=sa;password=infopag;integratedSecurity=true;";
     String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     try{
         Class.forName(driver);
@@ -31,4 +31,4 @@ public Connection getConnection(){
     throw new RuntimeException(e);
     }
 }
-}
+}   
