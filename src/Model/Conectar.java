@@ -16,7 +16,7 @@ public Conectar(){
     
 }    
 public Connection getConnection(){
-    String url = "jdbc:sqlserver://localhost:1433;databaseName=BD_folhadepagamento;user=sa;password=infopag;integratedSecurity=true;";
+    String url = "jdbc:sqlserver://localhost:1433;databaseName=BD_folhadepagamento;user=sa;password=infopag;integratedSecurity=false;encrypt=false; trustServerCertificate=false;";
     String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     try{
         Class.forName(driver);
