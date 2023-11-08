@@ -9,13 +9,15 @@ package Model;
  * @author luizf
  */
 public class Funcionario {
+   //declarando as variaveis do funcionario 
     String cpf;
           String  nome;
           String  rua;
           String  cargo;
           String  dt_admissao;
           Double  salarioBruto;
-    public Funcionario(){
+  //construtor
+      public Funcionario(){
       cpf="";  
       nome="";
       rua="";
@@ -23,7 +25,7 @@ public class Funcionario {
       dt_admissao="";
       salarioBruto=0.0;
     }
-
+//get e set de cada variavel
     public String getCpf() {
         return cpf;
     }

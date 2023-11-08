@@ -41,16 +41,18 @@ public void CreateTable(JTable tableD){
     modelT.addColumn("dt_admissao");
     modelT.addColumn("salarioBruto");
 Object[] coluna = new Object[6];
-int numRegistros = modelCRUD.listaFuncionario().size();
-
-for (int i=0; i<numRegistros; i++){
-    coluna[0] = modelCRUD.listaFuncionario().get(i).getCpf();
-    coluna[1] = modelCRUD.listaFuncionario().get(i).getNome();
-    coluna[2] =modelCRUD.listaFuncionario().get(i).getRua();
-    coluna[3]= modelCRUD.listaFuncionario().get(i).getCargo();
-    coluna[4]= modelCRUD.listaFuncionario().get(i).getDt_admissao();
-    coluna[5]=modelCRUD.listaFuncionario().get(i).getSalarioBruto();
+ArrayList<Funcionario>funcionario = modelCRUD.listaFuncionario();
+if(funcionario.size()>0){
+for (int i=0; i<funcionario.size(); i++){
+      
+        coluna[0]=funcionario.get(i).getCpf();
+        coluna[1]=funcionario.get(i).getNome();
+        coluna[2]=funcionario.get(i).getRua();
+        coluna[3]=funcionario.get(i).getCargo();
+        coluna[4]=funcionario.get(i).getDt_admissao();
+        coluna[5]=funcionario.get(i).getSalarioBruto();
     modelT.addRow(coluna);
+}
 }
 }
 public void LimparTela(){
@@ -73,6 +75,7 @@ public void actionPerformed(ActionEvent e){
         String rptaRegistro = modelCRUD.insertFuncionario(cpf, nome, rua, cargo, dt_admissao, salarioBruto);
         if(rptaRegistro != null){
             JOptionPane.showMessageDialog(null, rptaRegistro);
+             CreateTable(viewCRUD.jtdados);
         }else{
             JOptionPane.showMessageDialog(null,"Registro com problema");
         }
@@ -100,9 +103,8 @@ for(int i=0; i<numReg;i++){
     }
 }
 CreateTable(viewCRUD.jtdados);
-}//else{
- //JOptionPane.showMessageDialog(null,"selecione um registro");
-//}
+}
+
 
     if(e.getSource()==viewCRUD.btnBuscar){
         String Cpf= viewCRUD.txtcpf.getText();
@@ -116,14 +118,15 @@ CreateTable(viewCRUD.jtdados);
         modelT.addColumn("dt_admissao");
         modelT.addColumn("salarioBruto");
         Object[] coluna = new Object[6];
-        int numRegistros = modelCRUD.searchFuncionario(Cpf).size();
-        for(int i= 0; i<numRegistros;i++){
-        coluna[0]=modelCRUD.searchFuncionario(Cpf).get(i).getCpf();
-        coluna[1]=modelCRUD.searchFuncionario(Cpf).get(i).getNome();
-        coluna[2]=modelCRUD.searchFuncionario(Cpf).get(i).getRua();
-        coluna[3]=modelCRUD.searchFuncionario(Cpf).get(i).getCargo();
-        coluna[4]=modelCRUD.searchFuncionario(Cpf).get(i).getDt_admissao();
-        coluna[5]=modelCRUD.searchFuncionario(Cpf).get(i).getSalarioBruto();
+        ArrayList<Funcionario> funcionario = modelCRUD.searchFuncionario(Cpf);
+        
+        if(funcionario.size()>0){
+        coluna[0]=funcionario.get(0).getCpf();
+        coluna[1]=funcionario.get(0).getNome();
+        coluna[2]=funcionario.get(0).getRua();
+        coluna[3]=funcionario.get(0).getCargo();
+        coluna[4]=funcionario.get(0).getDt_admissao();
+        coluna[5]=funcionario.get(0).getSalarioBruto();
         modelT.addRow(coluna);
         }
         }
